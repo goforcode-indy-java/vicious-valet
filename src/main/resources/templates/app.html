@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vicious Valet</title>
+</head>
+<body>
+
+	<form action="/" method="post"><!-- This is a comment -->
+		<div>
+			<label>
+				License Plate
+				<input type="text" name="license">					
+			</label>
+		</div>
+		<div>
+			<label>
+				License State
+				<input type="text" name="state">					
+			</label>
+		</div>
+		<div>
+			<label>
+				Color
+				<input type="text" name="color">					
+			</label>
+		</div>
+		<div>
+			<label>
+				Make
+				<input type="text" name="make">					
+			</label>
+		</div>
+		<div>
+			<label>
+				Model
+				<input type="text" name="model">					
+			</label>
+		</div>
+		<button>Add a new car</button>
+	</form>
+	<p>The lot is full: ???</p>
+	<ul>
+		{{#lot.carList}}
+			<li>{{ license }}</li>
+		{{/lot.carList}}
+	</ul>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
