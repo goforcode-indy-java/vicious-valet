@@ -39,15 +39,40 @@
 		</div>
 		<button>Add a new car</button>
 	</form>
-	<p>The lot is full: ???</p>
-	<ul>
+	<p>The lot is full: {{ lot.isLotFull }}</p>
+	<p>The number of cars in the lot: {{ lot.size }}</p>
+	<!-- This is a comment. Just for Susan. -->
+	<table>
+		<thead>
+			<tr>
+				<th>License</th>
+				<th>State</th>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Color</th>
+			</tr>
+		</thead>
+		<tbody>
 		{{#lot.carList}}
-			<li>{{ license }}</li>
+			<tr>
+				<td>{{ license }}</td>
+				<td>{{ state }}</td>
+				<td>{{ make }}</td>
+				<td>{{ model }}</td>
+				<td>{{ color }}</td>
+				<td>
+					<form method="post" action="/remove">
+						<input type="hidden" name="carIndex" value="{{ -index }}">
+						<button>Remove from lot</button>
+					</form>
+				</td>
+			</tr>
 		{{/lot.carList}}
-	</ul>
-
+		</tbody>
+	</table>
 </body>
 </html>
+
 
 
 

@@ -10,10 +10,20 @@ import com.libertymutual.goforcode.vicious_valet.models.Lot;
 @Controller
 public class AppController {
 	
-	private Lot carLot;
+	private Lot vehicleBucket;
 	
 	public AppController() {
-		carLot = new Lot(5);
+		vehicleBucket = new Lot(5);
+	}
+	
+	@RequestMapping("/remove")
+	public ModelAndView removeCar(int carIndex) {
+		vehicleBucket.removeCarFromLot(carIndex);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("app");
+		mv.addObject("lot", vehicleBucket);
+		return mv;
 	}
 
 	@RequestMapping("/")
@@ -27,7 +37,7 @@ public class AppController {
 			// park the car in the lot
 			// (QUESTION: how do we do this?)
 			// (ANSWER: we need to add a method to the Lot class and call that method)
-			carLot.driveCarOnto(car);
+			vehicleBucket.driveCarOnto(car);
 		}
 		
 		
@@ -37,7 +47,7 @@ public class AppController {
 		
 		// Add the carLot so that I can see the list
 		// of cars in the view
-		mv.addObject("lot", carLot);
+		mv.addObject("lot", vehicleBucket);
 		
 		return mv;
 	}
